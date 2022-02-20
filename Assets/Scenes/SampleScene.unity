@@ -513,7 +513,6 @@ GameObject:
   - component: {fileID: 845322868}
   - component: {fileID: 845322867}
   - component: {fileID: 845322866}
-  - component: {fileID: 845322870}
   - component: {fileID: 845322871}
   m_Layer: 0
   m_Name: Player
@@ -599,21 +598,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &845322870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845322865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf3f803141ca7b848afeb9a26393cb6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 10
-  RotationSpeed: 10
-  JumpSpeed: 1
 --- !u!54 &845322871
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -904,41 +888,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1467627347 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6970966218117749259, guid: eaeed718dba121b4d89418ae7f17cff3, type: 3}
-  m_PrefabInstance: {fileID: 1766226921}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1467627348
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467627347}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.8397364
-  m_Height: 1.8760314
-  m_Direction: 1
-  m_Center: {x: 0.00043175198, y: 0.8084464, z: 0.034040716}
---- !u!54 &1467627349
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467627347}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!4 &1721229532 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eaeed718dba121b4d89418ae7f17cff3, type: 3}
@@ -997,7 +946,62 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eaeed718dba121b4d89418ae7f17cff3, type: 3}
       propertyPath: m_Name
-      value: Ch11_nonPBR
+      value: Bioseguridad
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: eaeed718dba121b4d89418ae7f17cff3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1558c0f0c86f172488ae193701a49db5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaeed718dba121b4d89418ae7f17cff3, type: 3}
+--- !u!1 &2082795768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: eaeed718dba121b4d89418ae7f17cff3, type: 3}
+  m_PrefabInstance: {fileID: 1766226921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2082795769
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082795768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.18776679
+  m_Height: 1.8289039
+  m_Direction: 1
+  m_Center: {x: 0.0025187433, y: 0.8404788, z: 0.03934273}
+--- !u!114 &2082795771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082795768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de3f4fe7d6157df448fa56b763c9d1d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidad_desplazamiento: 5
+  velocidad_rotacion: 100
+  x: 0
+  y: 0
+--- !u!54 &2082795772
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082795768}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
