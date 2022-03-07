@@ -13,6 +13,9 @@ public class Surface_Displacement : MonoBehaviour
     /* Variable para controlar el salto */
     public float fuerzaSalto;
     public bool puedeSaltar;
+    /* Variables para agachado */
+    public float velocidadInicial;
+    public float velocidadAgachado;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,9 @@ public class Surface_Displacement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         fuerzaSalto = 5f;
         puedeSaltar = false;
+        //Agachado
+        velocidadInicial = velocidad_desplazamiento;
+        velocidadAgachado = velocidad_desplazamiento / 2;
     }
 
     // FixedUpdate is called once per period time
@@ -43,6 +49,16 @@ public class Surface_Displacement : MonoBehaviour
             {
                 rb.AddForce(new Vector3(0, fuerzaSalto, 0), ForceMode.Impulse);
                 animator.SetBool("Salte", true);
+            }
+            if (Input.GetKey(KeyCode.C))
+            {
+                animator.SetBool("Agachado", true);
+                velocidad_desplazamiento = velocidadAgachado;
+            }
+            else
+            {
+                animator.SetBool("Agachado", false);
+                velocidad_desplazamiento = velocidadInicial;
             }
             animator.SetBool("TocarSuelo", true);
         }
