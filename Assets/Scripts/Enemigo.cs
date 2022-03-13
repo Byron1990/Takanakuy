@@ -11,12 +11,12 @@ public class Enemigo : MonoBehaviour
     public float grado;
     /* Objeto a perseguir */
     public GameObject target;
-    public float dist = Math.Infinity;
+    public float dist = Mathf.Infinity;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        target = GameObject.Find("Player");
+        target = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -27,7 +27,8 @@ public class Enemigo : MonoBehaviour
 
     public void ComportamientoEnemigo()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) > 5)
+        dist = Vector3.Distance(transform.position, target.transform.position);
+        if (dist > 30)
         {
             anim.SetBool("correr", false);
             crono += 1 * Time.deltaTime;
@@ -58,12 +59,12 @@ public class Enemigo : MonoBehaviour
         }
         else
         {
+            anim.SetBool("caminar", false);
+            anim.SetBool("correr", true);
             var lookPos = target.transform.position - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
-            anim.SetBool("caminar", false);
-            anim.SetBool("correr", true);
             transform.Translate(Vector3.forward * 2 * Time.deltaTime);
         }
     }
