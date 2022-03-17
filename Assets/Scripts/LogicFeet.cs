@@ -22,7 +22,7 @@ public class LogicFeet : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("OnTriggerExit other collider = " + other.name);
+        Debug.Log("Pies toparon " + other.name);
         //Si el personaje sale de la superficie no puede saltar
         surface_Displacement.puedeSaltar = false;
     }

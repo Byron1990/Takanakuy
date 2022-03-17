@@ -39,44 +39,52 @@ public class Surface_Displacement : MonoBehaviour
     // FixedUpdate is called once per period time
     void FixedUpdate()
     {
-        if (!estoyAtacado)
+        //Ataque con puño
+    /*   if (!estoyAtacado)
         {
             transform.Rotate(0, x * Time.deltaTime * velocidad_rotacion, 0);
             transform.Translate(0, 0, y * Time.deltaTime * velocidad_desplazamiento);
-        }
+        } */
         /* Comando para realizar desplazamientos */
         transform.Rotate(0, x * Time.deltaTime * velocidad_rotacion, 0);
         transform.Translate(0, 0, y * Time.deltaTime * velocidad_desplazamiento);
-
+        /*
         if (avanzaSolo)
         {
             rb.velocity = transform.forward * impulsoGolpe;
-        }
+        } */
     }
     // Update is called once per frame
     void Update()
     {
+        //Desplazamiento
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
+        animator.SetFloat("VelX", x);
+        animator.SetFloat("VelY", y);
+        
         /* Cuando activar el ataque */
-        if (Input.GetMouseButtonDown(0) && puedeSaltar && !estoyAtacado)
+        /* if (Input.GetMouseButtonDown(0) && puedeSaltar && !estoyAtacado)
         {
             Debug.Log("Ataque");
             animator.SetTrigger("Golpeo");
             estoyAtacado = true;
         }
-        animator.SetFloat("VelX", x);
-        animator.SetFloat("VelY", y);
+        */
+        
         //Control de salto de la animacion
         if (puedeSaltar)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(new Vector3(0, fuerzaSalto, 0), ForceMode.Impulse);
+                animator.SetBool("Salte", true);
+            }
+                
+            /*  
             if (!estoyAtacado)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    rb.AddForce(new Vector3(0, fuerzaSalto, 0), ForceMode.Impulse);
-                    animator.SetBool("Salte", true);
-                }
+                
                 if (Input.GetKey(KeyCode.C))
                 {
                     animator.SetBool("Agachado", true);
@@ -88,19 +96,24 @@ public class Surface_Displacement : MonoBehaviour
                     velocidad_desplazamiento = velocidadInicial;
                 }
             }
+            */
             animator.SetBool("TocarSuelo", true);
         }
         else
         {
             EstoyCayendo();
         }
+    /*  else
+        {
+            EstoyCayendo();
+        } */
     }
     void EstoyCayendo()
     {
         animator.SetBool("TocarSuelo", false);
         animator.SetBool("Salte", false);
     }
-
+/* 
     public void DejeDeAtacar()
     {
         estoyAtacado = false;
@@ -112,5 +125,5 @@ public class Surface_Displacement : MonoBehaviour
     public void DejaDeAvanzar()
     {
         avanzaSolo = false;
-    }
+    } */
 }
