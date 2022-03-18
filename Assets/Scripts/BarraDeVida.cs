@@ -15,4 +15,9 @@ public class BarraDeVida : MonoBehaviour
     {
         barraDeVida.fillAmount = vidaActual / vidaMaxima;
     }
+
+    public void RecibirDaño(float daño)
+    {
+        vidaActual -= daño;
+    }
 }

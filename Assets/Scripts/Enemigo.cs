@@ -13,6 +13,7 @@ public class Enemigo : MonoBehaviour
     public GameObject target;
     public float dist = Mathf.Infinity;
     // Start is called before the first frame update
+    public float distAtacar = 3;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -59,13 +60,21 @@ public class Enemigo : MonoBehaviour
         }
         else
         {
-            anim.SetBool("caminar", false);
-            anim.SetBool("correr", true);
-            var lookPos = target.transform.position - transform.position;
-            lookPos.y = 0;
-            var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
-            transform.Translate(Vector3.forward * 2 * Time.deltaTime);
+            if (dist < distAtacar)
+            {
+                anim.SetBool("Stomp", true);
+            }
+            else
+            {
+                anim.SetBool("caminar", false);
+                anim.SetBool("correr", true);
+                anim.SetBool("Stomp", false);
+                var lookPos = target.transform.position - transform.position;
+                lookPos.y = 0;
+                var rotation = Quaternion.LookRotation(lookPos);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
+                transform.Translate(Vector3.forward * 2 * Time.deltaTime);
+            }
         }
     }
 }
